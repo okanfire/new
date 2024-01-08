@@ -12,7 +12,7 @@ $directories |
         try {
             # ディレクトリ内のすべてのファイルのサイズを再帰的に計算
             $size = (
-            Get-ChildItem $_ -Recurse | 
+            Get-ChildItem $_ -Recurse -ErrorAction SilentlyContinue | 
             Measure-Object -Property Length -Sum -ErrorAction Stop
             ).Sum / [Math]::Pow(1024,2)
             # サイズが1000を超える場合は1kと表示
